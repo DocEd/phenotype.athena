@@ -1,0 +1,117 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# phenotype.athena
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+The goal of phenotype.athena is to allow a researcher to use their preferred clinical ontology to traverse the athena vocabularies in order to collect related terms for clinical phenotyping.
+This may be of use if one already has a validated clinical phenotype in a particular language, but you need it in another.
+This process makes use of the Athena vocabularies provided by OHDSI.
+
+## Installation
+
+You can install the released version of phenotype.athena from [github](https://www.github.com/DocEd/phenotype.athena) with:
+
+``` r
+remotes::install_github("DocEd/phenotype.athena")
+```
+## Setting Up Athena
+
+### Prerequisites
+
+- `R` (`R` is mandatory, R Studio is useful)
+- A download of the vocabularies you would like to use from (Athena)[http://athena.ohdsi.org/]
+- A PC with at least 8Gb of memory (moving the OMOP vocabularies through memory is the main bottleneck). If this is a problem, please let me know and I will optimise to mitigate this issue. You could also load the vocabularies yourself separately.
+
+Please setup your working directly with the following folder structure:
+
+```
+|--vocab/
+    |--CONCEPT_ANCESTOR.csv
+    |--CONCEPT.csv
+    |--CONCEPT_SYNONYM.csv
+    |--DRUG_STRENGTH.csv
+    |--VOCABULARY.csv
+    |--CONCEPT_CLASS.csv
+    |--CONCEPT_RELATIONSHIP.csv
+    |--DOMAIN.csv
+    |--RELATIONSHIP.csv
+```
+
+Try to keep the `vocab` folder for your vocabularies only.
+
+### Vocabulary Recommendations
+
+I recommend using the following vocabularies. You can download the following vocabularies from [athena](https://athena.ohdsi.org/), and add them to your project vocabulary folder:
+
+- 1	SNOMED
+- 6 LOINC
+- 8	RxNorm
+- 12 Gender
+- 13 Race
+- 14 CMS Place of Service
+- 34 ICD10
+- 44 Ethnicity
+- 55 OPCS4
+- 57 HES Specialty
+- 75 dm+d
+- 82 RxNorm Extension
+- 87 Specimen Type
+- 111 Episode Type
+- 115 Provider
+- 116 Supplier
+
+### Omopification
+
+You can now run the vocabulary loader by calling:
+
+```r
+library(phenotype.athena)
+
+# database_name will be the filename of the SQLite datbase.
+
+stand_up_omop(
+  project_path = ".",
+  cdm_version =  "5.3.1",
+  vocabulary_version = "5",
+  database_name = "decovid_omop.sqlite",
+  database_engine = "sqlite"
+)
+```
+
+If all goes well. You should now have a lovely Athena setup.
+Enjoy these magical good times.
+
+## Phenotyping
+
+Establish a connection to the database, check which vocabularies are availible
+and perform a search.
+
+```r
+# Connect to the database
+ctn <- dbConnect(RSQLite::SQLite(), "path_to_the_database")
+available_vocabularies(ctn)
+
+# Use the codes for "diabetes" from ICD-10
+
+phenotype_athena(
+  ctn,
+  concept_codes = c("E10", "E11", "E12", "O242"),
+  source_vocabulary = "ICD10", # Needs to be in the same format as shown by `available_vocabularies()`
+  )
+```

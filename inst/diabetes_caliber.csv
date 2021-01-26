@@ -1,0 +1,5 @@
+icd_10_code,icd_10_desc,caliber_category
+E10,Insulin-dependent diabetes mellitus,Insulin dependent diabetes
+E11,Non-insulin-dependent diabetes mellitus,Non insulin dependent diabetes
+E12,Malnutrition-related diabetes mellitus,Secondary diabetes
+O242,Diabetes mellitus in pregnancy: Pre-existing malnutrition-related diabetes mellitus,Secondary diabetes
