@@ -42,7 +42,7 @@ convert_to_standard <- function(connection,
   tbl(connection, "concept") %>%
     filter(
       .data$vocabulary_id == source_vocabulary,
-      .data$concept_code %in% !! diabetes$icd_10_code) %>%
+      .data$concept_code %in% !! concept_codes) %>%
     select(.data$concept_id) %>%
     left_join(
       tbl(ctn, "concept_relationship"),
@@ -87,7 +87,7 @@ phenotype_athena <- function(connection,
   df <- tbl(connection, "concept") %>%
     filter(
       .data$vocabulary_id == source_vocabulary,
-      .data$concept_code %in% !! diabetes$icd_10_code) %>%
+      .data$concept_code %in% !! concept_codes) %>%
     select(.data$concept_id) %>%
     left_join(
       tbl(ctn, "concept_relationship"),

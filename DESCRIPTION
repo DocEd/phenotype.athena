@@ -29,6 +29,7 @@ Imports:
     tidyselect
 Suggests: 
     RSQLite,
-    RPostgres
+    RPostgres,
+    testthat
 Depends: 
     R (>= 2.10)
