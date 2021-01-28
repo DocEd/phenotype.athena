@@ -1,6 +1,6 @@
-#' Check Athena Vocabulary Constraints
+#' @title Check Athena Vocabulary Constraints
 #'
-#' Sometimes there are violations of the NULL and NOT NULL constants of the
+#' @description Sometimes there are violations of the NULL and NOT NULL constants of the
 #' athena vocabularies. If you are having trouble loading the vocabularies, this
 #' might be why. This function will check the vocabularies that have been
 #' imported by `extract_vocab()`. The function will write out new vocabularies
@@ -130,9 +130,9 @@ check_vocabulary_constraints <- function(vocabulary,
 }
 
 
-#' Fix Athena Vocabulary Constraints
+#' @title Fix Athena Vocabulary Constraints
 #'
-#' Works like `check_vocabulary_constraints()` but fixes them.
+#' @description Works like `check_vocabulary_constraints()` but fixes them.
 #'
 #' @param vocab a list of vocabularies returned from `extract_vocab()`
 #'

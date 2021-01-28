@@ -1,12 +1,11 @@
-#' Create an empty OMOP database
+#' @title Create an empty OMOP database
 #'
-#' At the moment, this just creates the Athena vocabularies. Can easily add
-#' functionality to write out the clinical tables if necessary.
-#'
-#' This function instantiates an OHDSI CDM (referred to throughout as OMOP for
-#' brevity) database from the standardised vocabularies. It can be specified to
-#' output either version 5.3.1 or 6.0.0. After the OMOP database has been
-#' created, you have the option to add clinical data directly.
+#' @description At the moment, this just creates the Athena vocabularies. Can
+#'   easily add functionality to write out the clinical tables if necessary.
+#'   This function instantiates an OHDSI CDM (referred to throughout as OMOP for
+#'   brevity) database from the standardised vocabularies. It can be specified
+#'   to output either version 5.3.1 or 6.0.0. After the OMOP database has been
+#'   created, you have the option to add clinical data directly.
 #'
 #' @param project_path the path to your project folder with the following
 #'   populated folders: \itemize{\item `vocab`: contains ATHENA vocabularies. }

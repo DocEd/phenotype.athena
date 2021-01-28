@@ -1,6 +1,6 @@
-#' Extract OMOP Vocabularies from Source CSV Files
+#' @title Extract OMOP Vocabularies from Source CSV Files
 #'
-#' Takes a single argument `vocabulary_path` which is the local path
+#' @description Takes a single argument `vocabulary_path` which is the local path
 #' to the OMOP vocabularies in CSV format. These are an essential component to
 #' create a new OMOP database
 #'
@@ -123,9 +123,9 @@ extract_vocab <- function(vocabulary_path) {
 }
 
 
-#' Prepare Athena Vocabularies for loading into SQLite
+#' @title Prepare Athena Vocabularies for loading into SQLite
 #'
-#' SQLite does not have native types for dates or times. Rather is can only
+#' @description SQLite does not have native types for dates or times. Rather is can only
 #' support text, floating points, integers and blobs. As a result, it is
 #' referable to convert all dates and times into text before loading, to ensure
 #' that the date representation is in a human readable format.

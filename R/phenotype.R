@@ -1,4 +1,4 @@
-#' Check Available Vocabularies
+#' @title Check Available Vocabularies
 #'
 #' @param connection a database connection to a valid OMOP database
 #'
@@ -17,9 +17,9 @@ available_vocabularies <- function(connection) {
 }
 
 
-#' Convert Non-Standard Vocabulary to Athena Standard
+#' @title Convert Non-Standard Vocabulary to Athena Standard
 #'
-#' clinical concepts should be presented as "standard" concepts in OMOP. This
+#' @description clinical concepts should be presented as "standard" concepts in OMOP. This
 #' function takes non-standard codes, and returns their standard counterparts.
 #'
 #' @param connection a database connection to a valid OMOP database
@@ -55,9 +55,9 @@ convert_to_standard <- function(connection,
 
 }
 
-#' Create an Athena based phenotype
+#' @title Create an Athena based phenotype
 #'
-#' Uses the Athena vocabularies to create a broad phenotype from any other
+#' @description Uses the Athena vocabularies to create a broad phenotype from any other
 #' available vocabulary. The behaviour can be modified to limit the returning
 #' vocabularies should it be desirable.
 #'
@@ -112,9 +112,9 @@ phenotype_athena <- function(connection,
 
 }
 
-#' Find Descendent Concepts
+#' @title Find Descendent Concepts
 #'
-#' Takes standard athena codes and returns any potential descendent terms (also
+#' @description Takes standard athena codes and returns any potential descendent terms (also
 #' in standard form) government by the number of levels provided to `depth`
 #'
 #' @param connection a database connection to a valid OMOP databse

@@ -2,12 +2,13 @@
 % Please edit documentation in R/phenotype.R
 \name{phenotype_athena}
 \alias{phenotype_athena}
-\title{Phenotype}
+\title{Create an Athena based phenotype}
 \usage{
 phenotype_athena(
   connection,
   concept_codes = diabetes$icd_10_code,
-  source_vocabulary = "ICD10"
+  source_vocabulary = "ICD10",
+  output_vocabularies = "everything"
 )
 }
 \arguments{
@@ -16,12 +17,18 @@ phenotype_athena(
 \item{concept_codes}{the concept codes you want to phenotype from the source
 vocabulary specified in \code{source_vocabulary}}
 
-\item{source_vocabulary}{character string of the source vocabulary you are
+\item{source_vocabulary}{character vector (length 1) of the source vocabulary you are
 supplying}
+
+\item{output_vocabularies}{character vector (length n) listing the output
+vocabularies for the phenotype. The default is "everything" which rather
+unsurpringly returns everything}
 }
 \value{
-
+a table with concept ids that relate to the input codes
 }
 \description{
-Phenotype
+Uses the Athena vocabularies to create a broad phenotype from any other
+available vocabulary. The behaviour can be modified to limit the returning
+vocabularies should it be desirable.
 }

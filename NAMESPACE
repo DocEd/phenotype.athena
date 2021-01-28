@@ -2,7 +2,9 @@
 
 export(available_vocabularies)
 export(check_vocabulary_constraints)
+export(convert_to_standard)
 export(extract_vocab)
+export(find_descendents)
 export(fix_vocabulary_constraints)
 export(phenotype_athena)
 export(prep_sqlite_vocabularies)

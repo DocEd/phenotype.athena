@@ -10,7 +10,7 @@ available_vocabularies(connection)
 \item{connection}{a database connection to a valid OMOP database}
 }
 \value{
-a list of availible vocabularies
+a list of available vocabularies
 }
 \description{
 Check Available Vocabularies
